@@ -104,6 +104,28 @@ def run_test_problem3a():
     # your choice), add 1 more test case of your own choosing.
     # -------------------------------------------------------------------------
 
+    # Window 4:
+    title = 'Problem 3a. Test 4: Start at (30, 30), 20 lines'
+    window4 = rg.RoseWindow(450, 300, title)
+
+    # Test 4 (it is on window 3):
+    point = rg.Point(100, 10)
+    expected = 0
+    answer = problem3a(window4, point, 9)
+    print()
+    print('Test 5 expected:', expected)
+    print('       actual:  ', answer)
+
+    # Test 5
+    point = rg.Point(50, 60)
+    expected = 0
+    answer = problem3a(window4, point, 12)
+    print()
+    print('Test 6 expected:', expected)
+    print('       actual:  ', answer)
+
+    window4.close_on_mouse_click()
+
 
 def problem3a(window, point, n):
     """
@@ -146,6 +168,21 @@ def problem3a(window, point, n):
     #    DIFFICULTY:      7 or 8
     #    TIME ESTIMATE:   20 to 35 minutes.
     # -------------------------------------------------------------------------
+
+    line = rg.Line(point, rg.Point(point.x, point.y + 50))
+    line.attach_to(window)
+    thickness = 1
+    for k in range(n):
+        point.x = point.x + 20
+        point.y = point.y + 10
+        line1 = rg.Line(rg.Point(point.x, point.y), rg.Point(point.x, point.y + 50))
+        if thickness < 13:
+            thickness = 2 + thickness
+        else:
+            thickness = 13
+        line1.thickness = thickness
+        line1.attach_to(window)
+        window.render()
 
 
 def run_test_problem3b():
@@ -215,6 +252,14 @@ def problem3b(m, point1):
     #    DIFFICULTY:      8 or 9
     #    TIME ESTIMATE:   20 to 30 minutes.
     # -------------------------------------------------------------------------
+    window = rg.RoseWindow()
+    for k in range(m):
+        line = rg.Line()
+    for j in range(m):
+        line1 = rg.Line()
+
+
+
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
